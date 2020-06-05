@@ -1,4 +1,4 @@
-from neuralnet import use
+from lib import use
 
 test = use(-0.03373279179661687, [3.6, 8, 4], [0.10929483744187321, 0.5808167465638308, 0.5744888386808116])
 print(test.predict())
