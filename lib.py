@@ -1,6 +1,7 @@
 from tqdm import tqdm
 import random
 import time
+import numpy as np
 
 class train():
     def __init__(self, number_of_train, b, target, xs : list, alpha = -0.000000001, ws = []):
@@ -12,15 +13,23 @@ class train():
         self.alpha = alpha
         self.ws = ws
     
+    def sigmoid(self):
+        1/(1+np.exp(-self.x))
+
     def defaultws(self):
         for item in range(len(self.xs)): 
             self.ws.append(random.random())
         return self.ws
 
     def model(self):
-        for w in ws:
+        predictions = []
+        _sum = 0
+        for w in ws:  
             for x in xs:
-                return wheigt * x + b
+                predictions.append(sigmoid(wheigt * x + b))
+        
+        for time in range(len(predictions)):
+            _sum += predictions[time]
 
     def cost(self):
         return (self.model() - self.target) ** 2
@@ -36,26 +45,26 @@ class train():
         dcdwl = []
         for function in range(int(len(self.ws))):
             dcdwl.append(2 * (w * self.xs[function] + self.b - self.target) * function)
-        sum = 0
+        _sum = 0
         for item in dcdwl:
-            sum += item
-        return sum
+            _sum += item
+        return _sum
     
     def dcdb(self, w):
         dcdbl = []
         for function in range(int(len(self.ws))):
             dcdbl.append(2 * (w * self.xs[function] + self.b - self.target))
-        sum = 0
+        _sum = 0
         for item in dcdbl:
-            sum += item
-        return sum
+            _sum += item
+        return _sum
+
     def train(self):
         
         global b
         print(self.b)
         print(self.ws)
         print(self.target)
-        n = 0
         steta = st = time.time()
         with tqdm(total=self.number_of_train) as pbar:
             for train in range(self.number_of_train):
@@ -65,7 +74,25 @@ class train():
                 pbar.update(1)
         ft = time.time()
         tt = float(ft) - float(st)
-        print("wheights: " + str(self.ws))
+        print("weights: " + str(self.ws))
         print("bios: " + str(self.b))
         print("time took to train: " + str(tt))
-        open("./parameters.txt", "w+").write("bios: " + str(self.b) + "\nwheights: " + str(self.ws) + "\ntime took to train: " + str(tt))
+        open("./parameters.txt", "w+").write("bios: " + str(self.b) + "\nweights: " + str(self.ws) + "\ntime took to train: " + str(tt))
+
+class use():
+    def __init__(self, bios, inputs, weights):
+        self.bios = bios
+        self.inputs = inputs
+        self.weights = weights
+
+    def sigmoid(self, x):
+        return 1 / (1 + np.exp(-x))
+    
+    def predict(self):
+        predictions = []
+        sums = 0
+        for weight in range(len(self.weights)):
+            predictions.append(self.sigmoid(self.weights[weight] * self.inputs[weight] + self.bios))
+        for predictionnum in range(len(predictions)):
+            sums += predictions[predictionnum]
+        return sums
