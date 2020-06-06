@@ -1,0 +1,6 @@
+setup.py
+src/pysnn.egg-info/PKG-INFO
+src/pysnn.egg-info/SOURCES.txt
+src/pysnn.egg-info/dependency_links.txt
+src/pysnn.egg-info/requires.txt
+src/pysnn.egg-info/top_level.txt

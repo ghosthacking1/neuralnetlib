@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: py-snn
+Version: 0.0.1
+Summary: this is a simple neural network library in python
+Home-page: https://github.com/OfekShochat/py_snn
+Author: Ofek Shochat
+Author-email: o@shoch.at
+License: UNKNOWN
+Description: Hi, I'm Ofek Shochat. I was interested in neural networks for a while, and now I thought, why not create a simple lib.
+        I hope you will find issues and submit suggestions for my code. This project is under development.
+        
+        Ofek
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
